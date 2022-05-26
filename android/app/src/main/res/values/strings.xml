@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">vyltcapp</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">asdfasdfasdfa</string>
+</resources>

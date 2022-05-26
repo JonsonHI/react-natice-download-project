@@ -1,0 +1,54 @@
+{
+  "name": "vyltcapp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@kalwani/react-native-modal": "^0.1.2",
+    "@react-native-async-storage/async-storage": "^1.15.7",
+    "@react-native-community/art": "^1.2.0",
+    "@react-native-community/masked-view": "^0.1.11",
+    "mobx": "^5.15.7",
+    "mobx-react": "^6.3.0",
+    "react": "17.0.2",
+    "react-native": "0.67.4",
+    "react-native-simple-store": "^2.0.3",
+    "react-native-root-siblings": "^4.1.1",
+    "react-native-bootsplash": "^3.2.4",
+    "react-native-code-push": "7.0.1",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-modal": "^12.0.2",
+    "react-native-reanimated": "2.2.4",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "3.4.0",
+    "react-native-svg": "^12.1.1",
+    "react-native-indicator": "^1.2.2",
+    "react-native-tab-view": "^3.0.1",
+    "react-navigation": "^4.3.9",
+    "react-navigation-stack": "^2.10.4",
+    "react-navigation-tabs": "^2.8.13",
+    "react-native-fs": "^2.20.0",
+    "react-native-webview": "^11.18.2",
+    "react-native-zip-archive": "^6.0.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "babel-jest": "^26.6.3",
+    "eslint": "7.14.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-test-renderer": "17.0.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
