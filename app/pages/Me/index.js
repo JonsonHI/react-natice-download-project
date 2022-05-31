@@ -2,7 +2,7 @@
  * @Author: Jonson 
  * @Date: 2022-05-21 15:37:39 
  * @Last Modified by: Jonson
- * @Last Modified time: 2022-05-31 13:11:24
+ * @Last Modified time: 2022-05-31 14:01:45
  */
 
 import React from 'react';
@@ -20,7 +20,7 @@ import { ScaleSize, ScaleText } from '../../utils';
 import { inject, observer } from 'mobx-react'
 import BaseContainer from '../../components/BaseContainer';
 import Contacts from '../../components/AddressBook'
-
+import {Geolocation, stop} from '../../components/AmapLocation'
 
 @inject()
 @observer
@@ -32,7 +32,7 @@ export default class Me extends React.Component {
     headerShown: false
   })
 
-  componentDidMount(){
+  async componentDidMount(){
     // if (Platform.OS === "android") {
     //   PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
     //     title: "Contacts",
@@ -42,7 +42,12 @@ export default class Me extends React.Component {
     //   });
     // } else {
 
-    // }
+
+    
+      await Geolocation.getCurrentPosition(({ coords }) => {
+        console.log('coords~~~~~~~~~~~~~~~~:',coords)
+        stop();
+      })
   }
   auth() {
     return new Promise(async (resolve, reject) => {

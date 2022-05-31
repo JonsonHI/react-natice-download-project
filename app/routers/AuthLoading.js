@@ -1,8 +1,8 @@
 /*
  * @Author: Jonson 
  * @Date: 2022-05-21 15:37:57 
- * @Last Modified by:   Jonson 
- * @Last Modified time: 2022-05-21 15:37:57 
+ * @Last Modified by: Jonson
+ * @Last Modified time: 2022-05-31 13:56:31
  */
 
 import React, { Component, createRef } from 'react';
@@ -13,6 +13,7 @@ import { observable } from 'mobx'
 import { AppRouter } from './AppRouter';
 import { AuthRouter } from './AuthRouter';
 import BaseContainer from '../components/BaseContainer'
+import {init} from '../components/AmapLocation'
 import { ScaleText, ScaleSize, getBool } from '../utils'
 
 
@@ -30,10 +31,32 @@ export default class AuthLoadingScreen extends Component {
 
   }
 
+  amapSetUp = async () => {
+    await init({
+      android: "a3b86b891e99e3419416c3fe5d61455f",
+      ios: "58aade535e51cf41daa666a96549766f",
+    });
+    // await AMapSdk.setApiKey(
+    //   Platform.select({
+    //     android: "a3b86b891e99e3419416c3fe5d61455f",
+    //     ios: "58aade535e51cf41daa666a96549766f",
+    //   })
+    // )
+    const { LoginStore } = this.props;
+    if (Platform.OS === 'android') {
+      await PermissionsAndroid.requestMultiple([
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+      ]);
 
+    }
+
+
+  }
 
 
   async componentDidMount() {
+    this.amapSetUp()
     this.pageEnter()
     
   }
