@@ -2,7 +2,7 @@
  * @Author: Jonson 
  * @Date: 2022-05-21 15:37:39 
  * @Last Modified by: Jonson
- * @Last Modified time: 2022-05-26 15:58:08
+ * @Last Modified time: 2022-05-31 13:11:24
  */
 
 import React from 'react';
@@ -46,6 +46,18 @@ export default class Me extends React.Component {
   }
   auth() {
     return new Promise(async (resolve, reject) => {
+      const newUser = {
+        givenName: 'MyUser',
+        phoneNumbers: [{
+          label: 'mobile',
+          number: '999'
+        }],
+        // postalAddresses: [{
+        //   label: 'custom',
+        //   street: 'Anystreet',
+        //   country: 'United States'
+        // }]
+      };
       if (Platform.OS === 'android') {
         try {
           const granted = await PermissionsAndroid.request(
@@ -59,18 +71,7 @@ export default class Me extends React.Component {
             }
           )
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            const newUser = {
-              givenName: 'MyUser',
-              phoneNumbers: [{
-                label: 'mobile',
-                number: '999'
-              }],
-              // postalAddresses: [{
-              //   label: 'custom',
-              //   street: 'Anystreet',
-              //   country: 'United States'
-              // }]
-            };
+           
             // Contacts.addContact(newUser, (err) => {
             //   if (err) {
             //    console.warn(`error: ${err}`);
@@ -89,6 +90,9 @@ export default class Me extends React.Component {
           reject()
         }
       } else {
+        Contacts.addContact(newUser).then((contact) => {
+          console.log('contact', contact); // Logs the new record that was created
+        });
         resolve()
       }
     })
